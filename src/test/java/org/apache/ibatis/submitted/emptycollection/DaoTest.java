@@ -1,5 +1,5 @@
 /**
- *    Copyright 2009-2015 the original author or authors.
+ *    Copyright 2009-2016 the original author or authors.
  *
  *    Licensed under the Apache License, Version 2.0 (the "License");
  *    you may not use this file except in compliance with the License.
@@ -54,14 +54,14 @@ public class DaoTest {
     @Test
     public void testWithEmptyList() throws Exception {
         final List<TodoLists> actual = dao.selectWithEmptyList();
-
         Assert.assertEquals(1, actual.size());
+        final List<TodoItem> todoItems = actual.get(0).getTodoItems();
+        Assert.assertEquals("expect " + todoItems + " to be empty", 0, todoItems.size());        
     }
 
     @Test
     public void testWithNonEmptyList() throws Exception {
         final List<TodoLists> actual = dao.selectWithNonEmptyList();
-
         checkNonEmptyList(actual);
     }
 
